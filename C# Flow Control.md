@@ -1,12 +1,12 @@
 # C# Flow Control
 
-In this article, we will cover flow control in C#, a fundamental topic for any software developer. Effective management of flow control ensures that your program behaves predictably, performs efficiently, and remains readable and maintainable. Based on industry best practices, including insights from Steve McConnell’s *Code Complete*, we'll explore how to handle key flow control structures like `if`, `switch`, loops (`for`, `while`, `do-while`, `foreach`), and the `break`/`continue` statements.
+In this article, we'll explore flow control in C#, a fundamental topic for any software developer. Effective management of flow control ensures that your program behaves predictably, performs efficiently, and remains readable and maintainable. Based on industry best practices, including insights from Steve McConnell's *Code Complete*, we'll delve into key flow control structures like `if`, `switch`, loops (`for`, `while`, `do-while`, `foreach`), and the `break`/`continue` statements.
 
----
+
 
 ## The `if` Statement
 
-The `if` statement is a fundamental control structure that evaluates a Boolean condition and executes a block of code if the condition is `true`. Writing effective `if` statements is crucial for maintaining clean, readable, and efficient code while improving its clarity and maintainability..
+The `if` statement is a fundamental control structure that evaluates a Boolean condition and executes a block of code if the condition is `true`. Writing effective `if` statements is crucial for maintaining clean, readable, and efficient code.
 
 ### Example:
 
@@ -19,8 +19,6 @@ if (userInput == threshold)
     Console.WriteLine("The input matches the threshold! 🥳");
 }
 ```
-
-In the example above, the `if` block executes only if `userInput` equals `25`. If the condition evaluates to `true`, the message is printed.
 
 ### Best Practices
 
@@ -48,13 +46,13 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
     }
     ```
 
-    Breaking down the condition into descriptive Boolean variables improves readability and makes the logic easier to understand.
+    
 
 2. **Avoid Nested `if` Statements**
     While nesting `if` statements can sometimes be necessary, excessive nesting makes the code hard to follow. Instead of deeply nested `if` blocks, consider **guard clauses**—an early return or exit strategy that reduces nesting, which make your code flatter and easier to read.
-    
+
     **Before:**
-    
+
     ```csharp
     if (user != null)
     {
@@ -67,9 +65,9 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
         }
     }
     ```
-    
+
     **After (Using Guard Clauses):**
-    
+
     ```csharp
     if (user == null) return;
     if (!user.IsActive) return;
@@ -77,30 +75,31 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
     
     // Perform action...
     ```
+
     
-    Using guard clauses reduces unnecessary nesting and makes the main flow of the code more apparent.
 
 3. **Favor Positive Conditions**
     Whenever possible, write conditions in a positive manner. Positive conditions are easier to understand and often make your code more readable. For example, instead of negating a condition, use its positive equivalent.
 
     **Before (Negative Condition):**
-    
+
     ```csharp
     if (!isInvalid)
     {
         // Logic for valid case...
     }
     ```
-    
+
     **After (Positive Condition):**
-    
+
     ```csharp
     if (isValid)
     {
         // Logic for valid case...
     }
     ```
-    This change makes the condition clearer and reduces cognitive load when reading the code.
+
+    
 
 4. **Handle Edge Cases and Errors First (Guard Clauses)**
     Guard clauses allow you to handle edge cases and errors early in your code, preventing unnecessary complexity. By handling invalid conditions upfront, the main logic becomes more readable and manageable.
@@ -119,7 +118,7 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
     // Continue with core logic for active customers...
     ```
 
-    By handling invalid conditions immediately, you keep the main logic simple and focused.
+    
 
 5. **Put the Normal Case First**
     As Steve McConnell suggests in *Code Complete*, always handle the normal or expected case first in an `if` block. This keeps the focus on the main flow of logic, while exceptional cases can be handled afterward. This makes the code easier to follow.
@@ -149,6 +148,8 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
         // Handle unauthorized case...
     }
     ```
+
+    
 
 6. **Consider using `switch` for multiple conditions**
     When dealing with multiple conditions related to a single variable, a `switch` statement is often more readable than a series of `if-else` blocks. It provides a structured way to handle multiple cases, making it easier to see all the conditions at a glance.
@@ -190,10 +191,10 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
     }
     ```
 
-    Using a `switch` statement provides a clearer and more maintainable structure when dealing with multiple cases.
+    
 
 7. **Refactor Complex `if` Logic**
-    If your `if` conditions become too complex, it’s a sign that you should refactor the code. Extracting logic into separate methods or using design patterns (like the **Strategy Pattern**) can simplify decision-making and improve code readability.
+    If your `if` conditions become too complex, it's a sign that you should refactor the code. Extracting logic into separate methods or using design patterns (like the **Strategy Pattern**) can simplify decision-making and improve code readability.
 
     ```csharp
     if (ShouldSendNotification(user, notificationType))
@@ -202,9 +203,9 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
     }
     ```
 
-    By abstracting the logic into a method, you encapsulate the decision-making process and keep the `if` statement concise.
+    
 
-8. Test and Document Your Conditions
+8. **Test and Document Your Conditions**
     Always ensure that your conditions are thoroughly tested, including edge cases, null checks, and unexpected inputs. Use comments to document complex conditions or edge cases, making your code easier to maintain.
 
     ```csharp
@@ -215,7 +216,7 @@ In the example above, the `if` block executes only if `userInput` equals `25`. I
     }
     ```
 
-    A simple comment clarifies the intent of the condition and makes the code easier to understand for others.
+
 
 ## The `switch` Statement
 
@@ -245,36 +246,9 @@ switch (status)
 
 In this example, the program evaluates the value of `status` and executes the corresponding block of code. If none of the cases match, the `default` block is executed.
 
-### Best Practices for `switch` Statements:
+In recent versions of C# (beginning with C# 8.0), the `switch` statement has undergone significant enhancements through the integration of pattern matching. These improvements allow developers to write more concise and expressive code by leveraging **`switch` expressions**. This advancement simplifies the handling of multiple conditions and complex pattern matching scenarios, often reducing the verbosity commonly associated with traditional `switch` statements.
 
-1. **Always Include a `default` Case**: A `default` case ensures that your program handles unexpected or unhandled values gracefully.
-2. **Keep Cases Short and Concise**: Each case in a `switch` should perform a specific task. If the logic is complex, consider refactoring it into a separate method to keep the `switch` statement readable.
-3. **Use `switch` When Handling Multiple Discrete Values**: If your control flow depends on evaluating the same variable against multiple constant values, `switch` is more readable and maintainable than multiple `if-else` statements.
-
-In recent versions of C# (starting with C# 8.0), the `switch` statement has been significantly enhanced with pattern matching, allowing you to write more concise and expressive code through **`switch` expressions**. These enhancements make it easier to handle multiple conditions and pattern matching scenarios efficiently, often reducing the need for longer, more verbose `switch` statements.
-
-### Traditional `switch` vs `switch` Expressions
-
-A traditional `switch` statement typically looks like this:
-
-```c#
-public string GetDayName(int day)
-{
-    switch (day)
-    {
-        case 1:
-            return "Monday";
-        case 2:
-            return "Tuesday";
-        case 3:
-            return "Wednesday";
-        default:
-            return "Unknown";
-    }
-}
-```
-
-However, with **`switch` expressions** introduced in C# 8.0, you can achieve the same result with a more concise and expressive syntax:
+The introduction of **`switch` expressions** not only shortens the code but also enhances its readability and maintainability, making it a powerful tool for developers working with conditional logic.
 
 ```c#
 public string GetDayName(int day) => day switch
@@ -285,12 +259,6 @@ public string GetDayName(int day) => day switch
     _ => "Unknown"
 };
 ```
-
-### Benefits of `switch` Expressions:
-
-1. **More concise**: You no longer need to write `case` and `break` for each branch.
-2. **Functional**: `switch` expressions return a value directly, which aligns with functional programming principles.
-3. **Exhaustive**: The compiler checks if all cases are covered, ensuring that any missing cases are flagged as warnings or errors.
 
 ### Pattern Matching with `switch` Expressions
 
@@ -347,13 +315,17 @@ This example uses **relational patterns** and **type patterns** to match differe
    };
    ```
 
-By using these new features, you can write cleaner and more readable code, especially when handling complex scenarios that involve multiple conditions or data structures.
+### Best Practices for `switch` Statements:
 
-https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns
+1. **Always Include a `default` Case**: A `default` case ensures that your program handles unexpected or unhandled values gracefully.
+2. **Keep Cases Short and Concise**: Each case in a `switch` should perform a specific task. If the logic is complex, consider refactoring it into a separate method to keep the `switch` statement readable.
+3. **Use Pattern Matching**: Leverage C# 8.0+ features for more expressive code.
+
+
 
 ## Loops in C#
 
-Loops are used to execute a block of code repeatedly based on a condition. There are four primary looping structures in C#: `for`, `while`, `do-while`, and `foreach`.
+C# provides four primary looping structures: `for`, `while`, `do-while`, and `foreach`. Each has its specific use cases and best practices.
 
 ### The `for` Loop
 
@@ -367,8 +339,6 @@ for (int i = 0; i < 5; i++)
     Console.WriteLine($"Iteration {i + 1}");
 }
 ```
-
-In this example, the loop will execute five times, printing the iteration number to the console.
 
 ### Best Practices for `for` Loops:
 
@@ -386,7 +356,7 @@ for (int index = 0; index < numberOfIterations; index++)
 
 ### The `while` Loop
 
-A `while` loop repeats as long as its condition evaluates to `true`. It’s useful when you don’t know the number of iterations ahead of time and want to continue looping until a certain condition is met.
+A `while` loop is particularly useful when you do not know the number of iterations in advance because it continues to execute as long as its condition remains true. This makes it ideal for scenarios where the termination condition is not based on a predefined number of iterations, but rather on a dynamic or external condition being met during execution.
 
 ```c#
 int counter = 0;
@@ -398,36 +368,29 @@ while (counter < 5)
 }
 ```
 
-This loop will continue running until the condition `counter < 5` is no longer `true`.
-
 ### Best Practices for `while` Loops:
 
 1. **Ensure Your Loop Will Eventually Terminate**: Always update variables inside the loop to ensure the condition will eventually become `false`, avoiding infinite loops.
 2. **Consider Loop Conditions Carefully**: If the condition may never be met or is complex, consider adding a safety mechanism or logging to debug the loop's behavior.
-
-------
 
 ### The `do-while` Loop
 
 A `do-while` loop is similar to a `while` loop, but it guarantees that the code inside the loop will run at least once, even if the condition is `false` initially.
 
 ```c#
-int number = 0;
-
+int userInput;
 do
 {
-    Console.WriteLine($"Number: {number}");
-    number++;
-} while (number < 5);
-```
+    Console.WriteLine("Enter a number greater than 10: ");
+    userInput = int.Parse(Console.ReadLine());
+} while (userInput <= 10);
 
-In this example, the block of code executes first, and then the condition is evaluated. The loop will continue as long as `number` is less than 5.
+Console.WriteLine($"You entered: {userInput}");
+```
 
 ### Best Practices for `do-while` Loops:
 
 1. **Use When You Want at Least One Execution**: The primary use case for a `do-while` loop is when you need the loop to execute at least once, even if the condition is not met from the start.
-
-------
 
 ### The `foreach` Loop
 
@@ -442,18 +405,16 @@ foreach (string fruit in fruits)
 }
 ```
 
-In this example, the loop iterates over the `fruits` array and prints each fruit.
-
 ### Best Practices for `foreach` Loops:
 
-1. **Use When Iterating Over Collections**: A `foreach` loop is simpler and more readable than a `for` loop when iterating over collections because you don’t need to manage index values manually.
+1. **Use When Iterating Over Collections**: A `foreach` loop is simpler and more readable than a `for` loop when iterating over collections because you don't need to manage index values manually.
 2. **Avoid Modifying Collections Inside a `foreach`**: Modifying the collection (e.g., adding or removing elements) during iteration can lead to runtime exceptions. If you need to modify the collection, consider using a `for` loop or iterating over a copy of the collection.
 
 
 
 ## The `break` and `continue` Statements
 
-In C#, `break` and `continue` are control flow statements that are used to alter the execution of loops and `switch` statements. They provide a way to control when to exit a loop early or skip to the next iteration based on certain conditions. Proper usage of these statements can make your loops more efficient and readable.
+C#'s `break` and `continue` statements offer precise control over loops and switch statements. `break` exits a loop or switch case early, while `continue` skips to the next iteration. These tools, when used judiciously, can significantly enhance code efficiency and readability.
 
 ### The `break` Statement
 
@@ -470,19 +431,15 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-In this example, the loop will terminate as soon as `i` equals 5, so it will print iterations 0 to 4, and then exit the loop.
-
 ### Best Practices for Using `break`:
 
 1. **Use `break` to Exit Early from Loops When Necessary**: You can use `break` to terminate loops early when a certain condition is met. This can improve performance if continuing the loop would be unnecessary.
 2. **Avoid Overusing `break` in Complex Loops**: While `break` can simplify loop logic, overusing it can make loops harder to understand. Use it sparingly and consider refactoring complex loops to improve readability.
 3. **Always Include `break` in `switch` Statements**: Ensure that each case in a `switch` statement has a `break` (or equivalent control flow like `return` or `throw`), unless you intend to let execution fall through to the next case.
 
-------
-
 ### The `continue` Statement
 
-The `continue` statement skips the remaining code inside the loop for the current iteration and proceeds to the next iteration. Unlike `break`, `continue` does not terminate the loop—it just skips to the next loop cycle.
+The `continue` statement skips the remaining code inside the loop for the current iteration and proceeds to the next iteration. Unlike `break`, `continue` does not terminate the loop, it just skips to the next loop cycle.
 
 ```c#
 for (int i = 0; i < 10; i++)
@@ -495,11 +452,9 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-In this example, the `continue` statement causes the loop to skip over even numbers and only prints odd numbers.
-
 ### Best Practices for Using `continue`:
 
-1. **Use `continue` to Skip Unnecessary Processing**: When certain iterations in a loop don’t require further processing, `continue` can help you skip unnecessary steps, making the loop more efficient.
+1. **Use `continue` to Skip Unnecessary Processing**: When certain iterations in a loop don't require further processing, `continue` can help you skip unnecessary steps, making the loop more efficient.
 2. **Avoid Overusing `continue`**: While `continue` can simplify loops, excessive use may make the loop logic harder to follow. Ensure that it is used only when necessary to improve clarity.
 3. **Prefer `continue` Over Complex `if` Logic**: In some cases, using `continue` is clearer than adding multiple nested `if` conditions. For example, instead of writing complex conditional logic inside a loop, you can use `continue` to skip iterations early.
 
@@ -528,14 +483,10 @@ for (int i = 0; i < 10; i++)
     Console.WriteLine(i); // Perform action only for odd numbers
 }
 ```
-Using `continue` simplifies the loop and avoids unnecessary nesting.
-
 ## Conclusion
 
-Mastering flow control in C# is vital to writing clean, maintainable, and efficient code. Whether it's structuring `if` statements clearly, leveraging the power of `switch` expressions, or using loops effectively, following best practices will lead to better software development.
-
-For further reading on these principles, consider *Code Complete* by Steve McConnell, which offers deeper insights into writing clean, high-quality code.
+Mastering flow control in C# is vital to writing clean, maintainable, and efficient code. By following these best practices and leveraging modern C# features, you can significantly improve your code quality and readability.
 
 ## References
-McConnell, Steve. Code Complete. Microsoft Press.
-Microsoft Documentation: C# Patterns and Flow Control
+McConnell, S. (2004). *Code Complete* (2nd ed.). Microsoft Press.
+Microsoft. (n.d.). *Pattern matching*. Microsoft Learn. https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns
