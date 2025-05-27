@@ -1,0 +1,28 @@
+// Protos/person.proto
+syntax = "proto3"; // Specify proto3 syntax
+
+// Option specifies the C# namespace for the generated code
+option csharp_namespace = "ProtobufDemo.Protos";
+
+package tutorial; // Package declaration (optional but good practice)
+
+// Define an enumeration for phone types
+enum PhoneType {
+  MOBILE = 0; // Proto3 requires the first enum value to be 0
+  HOME = 1;
+  WORK = 2;
+}
+
+// Define a message for phone numbers
+message PhoneNumber {
+  string number = 1;    // Field number 1
+  PhoneType type = 2;   // Field number 2
+}
+
+// Define the main Person message
+message Person {
+  string name = 1;         // Field number 1
+  int32 id = 2;            // Field number 2 (32-bit integer)
+  string email = 3;        // Field number 3
+  repeated PhoneNumber phones = 4; // Field number 4 - represents a list/collection
+}

@@ -1,0 +1,15 @@
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\bin\Debug\net8.0\AsyncDemo.exe
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\bin\Debug\net8.0\AsyncDemo.deps.json
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\bin\Debug\net8.0\AsyncDemo.runtimeconfig.json
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\bin\Debug\net8.0\AsyncDemo.dll
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\bin\Debug\net8.0\AsyncDemo.pdb
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.AssemblyInfoInputs.cache
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.AssemblyInfo.cs
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.csproj.CoreCompileInputs.cache
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.sourcelink.json
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.dll
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\refint\AsyncDemo.dll
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.pdb
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\AsyncDemo.genruntimeconfig.cache
+C:\SourceCode\RoadToCSharp\Async\AsyncDemo\obj\Debug\net8.0\ref\AsyncDemo.dll
