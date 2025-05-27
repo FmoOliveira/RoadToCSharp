@@ -1,0 +1,9 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+message UserProto {
+  int32 id = 1;
+  string name = 2;
+  bool is_active = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
